@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="demo.css">
-
+    <script src="demo.js"></script>
 
     <title>Document</title>
 </head>
@@ -15,16 +15,30 @@
 <body>
     <div class="header">
         <div class="head">
-
+            <div class="heada"></div>
+                <input type="text" class="headb">
+                <p class="headb1">搜天猫</p>
+            <p class="headc"> 搜本店</p>
         </div>
 
         <div class="head1">
 
         </div>
         <div class="head2">
-            <ul>
+            <ul class="head2a">
                 <li>
-                    <a href="">本店所有商品</a>
+                    <select name="" id="" style="background-color: #b71212; color:white;border: red;">
+                        <option value="0">本店所有商品</option>
+                        <option value="1">手镯</option>
+                        <option value="2">耳钉</option>
+                        <option value="">梳子</option>
+                        <option value="">指环</option>
+                        <option value="">手链</option>
+                        <option value="">项链</option>
+                        <option value="">发簪</option>
+                        <option value="">耳环</option>
+                        <option value="">耳坠</option>
+                    </select>
                 </li>
                 <li>
                     <a href="">手镯</a>
@@ -59,18 +73,183 @@
 
 
     <div class="body1">
-
+        <div class="box" id="box">
+            <div class="slider" id="slider">
+                <div class="slide"><img src="img/lun5.jpg" alt=""></div>
+                <div class="slide"><img src="img/lun1.jpg" alt=""></div>
+                <div class="slide"><img src="img/lun2.jpg" alt=""></div>
+                <div class="slide"><img src="img/lun3.jpg" alt=""></div>
+                <div class="slide"><img src="img/lun4.jpg" alt=""></div>
+                <div class="slide"><img src="img/lun5.jpg" alt=""></div>
+                <div class="slide"><img src="img/lun1.jpg" alt=""></div>
+            </div>
+            <span id="left">&lt;</span>
+            <span id="right">&gt;</span>
+            <ul class="nav" id="nav">
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
     </div>
+
+
+    <script>
+        var box = document.getElementById('box');
+        var slider = document.getElementById('slider');
+        var left = document.getElementById('left');
+        var right = document.getElementById('right');
+        var oNavlist = document.getElementById('nav').children;
+        var index = 1; //打开页面生效的图片的下标为1
+        var timer;
+        var isMoving = false;
+
+        box.onmouseover = function () {
+            animate(left, {
+                opacity: 0.6
+            })
+            animate(right, {
+                opacity: 0.6
+            })
+            clearInterval(timer); //图片停止滚动
+        }
+        box.onmouseout = function () {
+            animate(left, {
+                opacity: 0
+            })
+            animate(right, {
+                opacity: 0
+            })
+            timer = setInterval(next, 3000); //图片开始接着滚动
+        }
+        right.onclick = next;
+        left.onclick = prev;
+
+        function next() {
+            if (isMoving) {
+                return;
+            }
+            isMoving = true;
+            index++;
+            navmove();
+            animate(slider, {
+                left: -500 * index
+            }, function () {
+                if (index == 6) {
+                    slider.style.left = '-500px';
+                    index = 1;
+                }
+                isMoving = false;
+            });
+        }
+
+        function prev() {
+            if (isMoving) {
+                return;
+            }
+            isMoving = true;
+            index--;
+            navmove();
+            animate(slider, {
+                left: -500 * index
+            }, function () {
+                if (index == 0) {
+                    slider.style.left = '-2500px';
+                    index = 5;
+                }
+                isMoving = false;
+            });
+        }
+
+        for (var i = 0; i < oNavlist.length; i++) {
+            oNavlist[i].index = i;
+            oNavlist[i].onclick = function () {
+                index = this.index + 1;
+                navmove();
+                animate(slider, {
+                    left: -500 * index
+                });
+            }
+
+        }
+
+        function navmove() {
+            for (var i = 0; i < oNavlist.length; i++) {
+                oNavlist[i].className = "";
+            }
+            if (index > 5) {
+                oNavlist[0].className = "active";
+            } else if (index <= 0) {
+                oNavlist[4].className = "active";
+            } else {
+                oNavlist[index - 1].className = "active";
+            }
+        }
+        timer = setInterval(next, 3000);
+    </script>
+
+
+
+
 
 
     <div class="body2">
+        <div class="body2a">
+            <div class="body2a1">
 
+            </div>
+            <div class="body2a2"></div>
+            <div class="body2a3"></div>
+            <div class="body2a4"></div>
+        </div>
     </div>
     <div class="body3">
         <p class="body3a">热销宝贝分类</p>
-
+        <p>HOT PRODUCT</p>
         <div class="body3b">
-
+            <div class="body3b1">
+                <p class="body3b1a">手镯</p>
+                <div class="body3b1b"></div>
+            </div>
+            <div class="body3b2">
+                <div class="body3ba">
+                    <p class="body3ba1">耳环</p>
+                    <div class="body3ba2"></div>
+                </div>
+                <div class="body3bb">
+                    <p class="body3bb1">吊坠</p>
+                    <div class="body3bb2"></div>
+                </div>
+                <div class="body3bc">
+                    <p class="body3bc1">发簪</p>
+                    <div class="body3bc2"></div>
+                </div>
+                <div class="body3bd">
+                    <p class="body3bd1">手链</p>
+                    <div class="body3bd2"></div>
+                </div>
+            </div>
+            <div class="body3c">
+                <div class="body3c1"></div>
+                <p class="body3c2">梳子</p>
+                <div class="body3c3"></div>
+            </div>
+            <div class="body3d">
+                <div class="body3da">
+                    <p class="body3da1">耳环</p>
+                    <div class="body3da2"></div>
+                </div>
+                <div class="body3db">
+                    <p class="body3db1">项链</p>
+                    <div class="body3db2"></div>
+                </div>
+                <div class="body3dc">
+                    <p class="body3dc1">耳钉</p>
+                    <div class="body3dc2"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -78,41 +257,732 @@
     <div class="body4">
         <div class="body4a">
             <ul>
-                <li>手</li>
-                <li>工</li>
-                <li>银</li>
-                <li>镯</li>
+                <li class="body4a1">手</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">工</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">银</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">镯</li>
             </ul>
         </div>
+        <div class="body4b">
+            <div class="body4b1"></div>
+            <p class="body4b2">复古工艺 彰显个性</p>
+            <div class="body4b3"></div>
+        </div>
+        <div class="body4c">
+            <div class="body4c1">
+                <div class="body4c1a"></div>
+                <div class="body4c1b">
+                    <div class="body4c1b1">
+                        <a href="">立即购买</a>
+                    </div>
+                </div>
+            </div>
+            <div class="body4c2">
+
+                <div class="body4c2a">
+                    <div class="body4c2a1">
+                    </div>
+                    <div class="body4c2a2">
+                        <div class="body4c2a2a">
+                            <a href="">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body4c2b">
+                    <div class="body4c2b1">
+                        <div class="body4c2b1a"></div>
+                        <div class="body4c2b1b">
+                            <div class="body4c2b1b1">
+                                <a href="">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body4c2b2">
+                        <div class="body4c2b2a">
+                            <div class="body4c2b2a1"></div>
+                            <div class="body4c2b2a2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body4c2b2b">
+                            <div class="body4c2b2b1"></div>
+                            <div class="body4c2b2b2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
     <div class="body4">
         <div class="body4a">
             <ul>
-                <li>手</li>
-                <li>工</li>
-                <li>银</li>
-                <li>镯</li>
+                <li class="body4a1">手</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">工</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">银</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">镯</li>
             </ul>
         </div>
+        <div class="body4b">
+            <div class="body4b1"></div>
+            <p class="body4b2">复古工艺 彰显个性</p>
+            <div class="body4b3"></div>
+        </div>
+        <div class="body4c">
+            <div class="body4c1">
+                <div class="body5c1a"></div>
+                <div class="body4c1b">
+                    <div class="body4c1b1">
+                        <a href="">立即购买</a>
+                    </div>
+                </div>
+            </div>
+            <div class="body4c2">
+
+                <div class="body4c2a">
+                    <div class="body5c2a1">
+                    </div>
+                    <div class="body4c2a2">
+                        <div class="body4c2a2a">
+                            <a href="">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body4c2b">
+                    <div class="body4c2b1">
+                        <div class="body5c2b1a"></div>
+                        <div class="body4c2b1b">
+                            <div class="body4c2b1b1">
+                                <a href="">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body4c2b2">
+                        <div class="body4c2b2a">
+                            <div class="body5c2b2a1"></div>
+                            <div class="body4c2b2a2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body4c2b2b">
+                            <div class="body5c2b2b1"></div>
+                            <div class="body4c2b2b2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
     <div class="body4">
         <div class="body4a">
             <ul>
-                <li>手</li>
-                <li>工</li>
-                <li>银</li>
-                <li>镯</li>
+                <li class="body4a1">手</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">工</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">银</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">镯</li>
             </ul>
         </div>
+        <div class="body4b">
+            <div class="body4b1"></div>
+            <p class="body4b2">复古工艺 彰显个性</p>
+            <div class="body4b3"></div>
+        </div>
+        <div class="body4c">
+            <div class="body4c1">
+                <div class="body6c1a"></div>
+                <div class="body4c1b">
+                    <div class="body4c1b1">
+                        <a href="">立即购买</a>
+                    </div>
+                </div>
+            </div>
+            <div class="body4c2">
+
+                <div class="body4c2a">
+                    <div class="body6c2a1">
+                    </div>
+                    <div class="body4c2a2">
+                        <div class="body4c2a2a">
+                            <a href="">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body4c2b">
+                    <div class="body4c2b1">
+                        <div class="body6c2b1a"></div>
+                        <div class="body4c2b1b">
+                            <div class="body4c2b1b1">
+                                <a href="">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body4c2b2">
+                        <div class="body4c2b2a">
+                            <div class="body6c2b2a1"></div>
+                            <div class="body4c2b2a2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body4c2b2b">
+                            <div class="body6c2b2b1"></div>
+                            <div class="body4c2b2b2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
     <div class="body4">
         <div class="body4a">
             <ul>
-                <li>手</li>
-                <li>工</li>
-                <li>银</li>
-                <li>镯</li>
+                <li class="body4a1">手</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">工</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">银</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">镯</li>
             </ul>
+        </div>
+        <div class="body4b">
+            <div class="body4b1"></div>
+            <p class="body4b2">复古工艺 彰显个性</p>
+            <div class="body4b3"></div>
+        </div>
+        <div class="body4c">
+            <div class="body4c1">
+                <div class="body7c1a"></div>
+                <div class="body4c1b">
+                    <div class="body4c1b1">
+                        <a href="">立即购买</a>
+                    </div>
+                </div>
+            </div>
+            <div class="body4c2">
+
+                <div class="body4c2a">
+                    <div class="body7c2a1">
+                    </div>
+                    <div class="body4c2a2">
+                        <div class="body4c2a2a">
+                            <a href="">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body4c2b">
+                    <div class="body4c2b1">
+                        <div class="body7c2b1a"></div>
+                        <div class="body4c2b1b">
+                            <div class="body4c2b1b1">
+                                <a href="">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body4c2b2">
+                        <div class="body4c2b2a">
+                            <div class="body7c2b2a1"></div>
+                            <div class="body4c2b2a2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body4c2b2b">
+                            <div class="body7c2b2b1"></div>
+                            <div class="body4c2b2b2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="body4">
+        <div class="body4a">
+            <ul>
+                <li class="body4a1">手</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">工</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">银</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">镯</li>
+            </ul>
+        </div>
+        <div class="body4b">
+            <div class="body4b1"></div>
+            <p class="body4b2">复古工艺 彰显个性</p>
+            <div class="body4b3"></div>
+        </div>
+        <div class="body4c">
+            <div class="body4c1">
+                <div class="body8c1a"></div>
+                <div class="body4c1b">
+                    <div class="body4c1b1">
+                        <a href="">立即购买</a>
+                    </div>
+                </div>
+            </div>
+            <div class="body4c2">
+
+                <div class="body4c2a">
+                    <div class="body8c2a1">
+                    </div>
+                    <div class="body4c2a2">
+                        <div class="body4c2a2a">
+                            <a href="">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body4c2b">
+                    <div class="body4c2b1">
+                        <div class="body8c2b1a"></div>
+                        <div class="body4c2b1b">
+                            <div class="body4c2b1b1">
+                                <a href="">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body4c2b2">
+                        <div class="body4c2b2a">
+                            <div class="body8c2b2a1"></div>
+                            <div class="body4c2b2a2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body4c2b2b">
+                            <div class="body8c2b2b1"></div>
+                            <div class="body4c2b2b2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="body4">
+        <div class="body4a">
+            <ul>
+                <li class="body4a1">手</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">工</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">银</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">镯</li>
+            </ul>
+        </div>
+        <div class="body4b">
+            <div class="body4b1"></div>
+            <p class="body4b2">复古工艺 彰显个性</p>
+            <div class="body4b3"></div>
+        </div>
+        <div class="body4c">
+            <div class="body4c1">
+                <div class="body9c1a"></div>
+                <div class="body4c1b">
+                    <div class="body4c1b1">
+                        <a href="">立即购买</a>
+                    </div>
+                </div>
+            </div>
+            <div class="body4c2">
+
+                <div class="body4c2a">
+                    <div class="body9c2a1">
+                    </div>
+                    <div class="body4c2a2">
+                        <div class="body4c2a2a">
+                            <a href="">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body4c2b">
+                    <div class="body4c2b1">
+                        <div class="body9c2b1a"></div>
+                        <div class="body4c2b1b">
+                            <div class="body4c2b1b1">
+                                <a href="">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body4c2b2">
+                        <div class="body4c2b2a">
+                            <div class="body9c2b2a1"></div>
+                            <div class="body4c2b2a2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body4c2b2b">
+                            <div class="body9c2b2b1"></div>
+                            <div class="body4c2b2b2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="body4">
+        <div class="body4a">
+            <ul>
+                <li class="body4a1">手</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">工</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">银</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">镯</li>
+            </ul>
+        </div>
+        <div class="body4b">
+            <div class="body4b1"></div>
+            <p class="body4b2">复古工艺 彰显个性</p>
+            <div class="body4b3"></div>
+        </div>
+        <div class="body4c">
+            <div class="body4c1">
+                <div class="body10c1a"></div>
+                <div class="body4c1b">
+                    <div class="body4c1b1">
+                        <a href="">立即购买</a>
+                    </div>
+                </div>
+            </div>
+            <div class="body4c2">
+
+                <div class="body4c2a">
+                    <div class="body10c2a1">
+                    </div>
+                    <div class="body4c2a2">
+                        <div class="body4c2a2a">
+                            <a href="">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body4c2b">
+                    <div class="body4c2b1">
+                        <div class="body10c2b1a"></div>
+                        <div class="body4c2b1b">
+                            <div class="body4c2b1b1">
+                                <a href="">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body4c2b2">
+                        <div class="body4c2b2a">
+                            <div class="body10c2b2a1"></div>
+                            <div class="body4c2b2a2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body4c2b2b">
+                            <div class="body10c2b2b1"></div>
+                            <div class="body4c2b2b2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="body4">
+        <div class="body4a">
+            <ul>
+                <li class="body4a1">手</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">工</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">银</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">镯</li>
+            </ul>
+        </div>
+        <div class="body4b">
+            <div class="body4b1"></div>
+            <p class="body4b2">复古工艺 彰显个性</p>
+            <div class="body4b3"></div>
+        </div>
+        <div class="body4c">
+            <div class="body4c1">
+                <div class="body11c1a"></div>
+                <div class="body4c1b">
+                    <div class="body4c1b1">
+                        <a href="">立即购买</a>
+                    </div>
+                </div>
+            </div>
+            <div class="body4c2">
+
+                <div class="body4c2a">
+                    <div class="body11c2a1">
+                    </div>
+                    <div class="body4c2a2">
+                        <div class="body4c2a2a">
+                            <a href="">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body4c2b">
+                    <div class="body4c2b1">
+                        <div class="body11c2b1a"></div>
+                        <div class="body4c2b1b">
+                            <div class="body4c2b1b1">
+                                <a href="">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body4c2b2">
+                        <div class="body4c2b2a">
+                            <div class="body11c2b2a1"></div>
+                            <div class="body4c2b2a2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body4c2b2b">
+                            <div class="body11c2b2b1"></div>
+                            <div class="body4c2b2b2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="body4">
+        <div class="body4a">
+            <ul>
+                <li class="body4a1">手</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">工</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">银</li>
+                <p class="body4a2">.</p>
+                <li class="body4a1">镯</li>
+            </ul>
+        </div>
+        <div class="body4b">
+            <div class="body4b1"></div>
+            <p class="body4b2">复古工艺 彰显个性</p>
+            <div class="body4b3"></div>
+        </div>
+        <div class="body4c">
+            <div class="body4c1">
+                <div class="body12c1a"></div>
+                <div class="body4c1b">
+                    <div class="body4c1b1">
+                        <a href="">立即购买</a>
+                    </div>
+                </div>
+            </div>
+            <div class="body4c2">
+
+                <div class="body4c2a">
+                    <div class="body12c2a1">
+                    </div>
+                    <div class="body4c2a2">
+                        <div class="body4c2a2a">
+                            <a href="">立即购买</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body4c2b">
+                    <div class="body4c2b1">
+                        <div class="body12c2b1a"></div>
+                        <div class="body4c2b1b">
+                            <div class="body4c2b1b1">
+                                <a href="">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="body4c2b2">
+                        <div class="body4c2b2a">
+                            <div class="body12c2b2a1"></div>
+                            <div class="body4c2b2a2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="body4c2b2b">
+                            <div class="body12c2b2b1"></div>
+                            <div class="body4c2b2b2">
+                                <div class="body4c2b1b1">
+                                    <a href="">立即购买</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="di">
+        <div class="di1">
+            <div class="di1a">
+                <ul>
+                    <li>
+                        <div class="di1a1">优</div>
+                        <p class="di1a1a">品质保证</p>
+                        <p class="di1a1b">品质护航 购物无忧</p>
+                    </li>
+                    <li>
+                        <div class="di1a1">七</div>
+                        <p class="di1a1a">七天无理由退换货</p>
+                        <p class="di1a1b">为您提供售后无忧保障</p>
+                    </li>
+                    <li>
+                        <div class="di1a1">特</div>
+                        <p class="di1a1a">特色服务体验</p>
+                        <p class="di1a1b">为您呈现不一样的服务</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dib">
+                <ul>
+                    <li>
+                        <a href="" style="color:black;font-size:16px;">购物指南</a><br>
+                        <a href="">免费注册</a><br>
+                        <a href="">开通支付宝</a><br>
+                        <a href="">支付宝充值</a>
+                    </li>
+                    <li>
+                        <a href="" style="color:black;font-size:16px;">天猫保障</a><br>
+                        <a href="">发票保障</a><br>
+                        <a href="">售后规则</a><br>
+                        <a href="">缺货赔付</a><br>
+                    </li>
+                    <li>
+                        <a href="" style="color:black;font-size:16px;">支付方式</a><br>
+                        <a href="">快捷支付</a><br>
+                        <a href="">信用卡</a><br>
+                        <a href="">余额宝</a><br>
+                        <a href="">蚂蚁花呗</a><br>
+                        <a href="">货到付款</a><br>
+                    </li>
+                    <li>
+                        <a href="" style="color:black;font-size:16px;">商家服务</a><br>
+                        <a href="">天猫规则</a><br>
+                        <a href="">商家入驻</a><br>
+                        <a href="">商家中心</a><br>
+                        <a href="">天猫智库</a><br>
+                        <a href="">物流服务</a><br>
+                        <a href="">喵言喵语</a><br>
+                        <a href="">运营服务</a><br>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
