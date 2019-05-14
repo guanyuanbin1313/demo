@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="1.css">
+    <title>孔雀手镯</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="head">
+            <div class="heada"></div>
+            <input type="text" class="headb">
+            <p class="headb1">搜天猫</p>
+            <p class="headc"> 搜本店</p>
+        </div>
+
+        <div class="head1">
+
+        </div>
+        <div class="head2">
+            <ul class="head2a">
+                <li>
+                    <select name="" id="" style="background-color: #b71212; color:white;border: red;">
+                        <option value="0">本店所有商品</option>
+                        <option value="https://guanyuanbin1313.github.io/demo/xiangqing/2.html">手镯</option>
+                        <option value="2">耳钉</option>
+                        <option value="https://guanyuanbin1313.github.io/demo/xiangqing/3.html">梳子</option>
+                        <option value="https://guanyuanbin1313.github.io/demo/xiangqing/4.html">指环</option>
+                        <option value="">手链</option>
+                        <option value="">项链</option>
+                        <option value="">发簪</option>
+                        <option value="">耳环</option>
+                        <option value="">耳坠</option>
+                    </select>
+                </li>
+                <li>
+                    <a href="https://guanyuanbin1313.github.io/demo/xiangqing/1.html">手镯</a>
+                </li>
+                <li>
+                    <a href="">耳钉</a>
+                </li>
+                <li>
+                    <a href="https://guanyuanbin1313.github.io/demo/xiangqing/3.html">梳子</a>
+                </li>
+                <li>
+                    <a href="https://guanyuanbin1313.github.io/demo/xiangqing/4.html">指环</a>
+                </li>
+                <li>
+                    <a href="">手链</a>
+                </li>
+                <li>
+                    <a href="">项链</a>
+                </li>
+                <li>
+                    <a href="">发簪</a>
+                </li>
+                <li>
+                    <a href="">耳环</a>
+                </li>
+                <li>
+                    <a href="">吊坠</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <div class="bannerb">
+        <div class="bannerb1">
+            <a href="https://guanyuanbin1313.github.io/demo/demo.html">首页</a>
+            <a href="https://guanyuanbin1313.github.io/demo/xiangqing/2.html">>孔雀手镯</a>
+        </div>
+        <div class="bannerc">
+            <div class="bannerc1">
+                <div id="bannerc1a">
+                    <div id="bannerc1aa">
+                        <div id="img1">
+                            <img src="img/1.png" id="img">
+                            <div id="slider"></div>
+                        </div>
+                        <div id="img2">
+                            <img src="img/1.png" id="Bimg" />
+                        </div>
+                    </div>
+                    <div class="bannerc1ab">
+                        <img src="img/spanl.jpg" style="float:left" id="btn1">
+                        <img src="img/1.png" id="btn">
+                        <img src="img/1.png" id="bt">
+                        <img src="img/spanr.jpg" style="float:right" id="bt1">
+                    </div>
+                </div>
+                <script>
+                    var img = document.getElementById('img');
+                    var btn1 = document.getElementById('btn1');
+                    var btn = document.getElementById('btn');
+                    var bt = document.getElementById('bt');
+                    var bt1 = document.getElementById('bt1');
+                    btn1.onclick = function () {
+                        btn.style.border = "1px solid #ff9003";
+                        bt.style.border = "1px solid #ffffff";
+                        img.src = "img/1.png";
+                        Bimg.src = "img/1.png";
+                    }
+                    btn.onmouseover = function () {
+                        btn.style.border = "1px solid #ff9003";
+                        bt.style.border = "1px solid #ffffff";
+                        img.src = "img/1.png";
+                        img.src = "img/1.png";
+                    }
+                    bt.onmouseover = function () {
+                        bt.style.border = "1px solid #ff9003";
+                        btn.style.border = "1px solid #ffffff";
+                        img.src = "img/1.png";
+                        img.src = "img/1.png";
+                    }
+                    bt1.onclick = function () {
+                        bt.style.border = "1px solid #ff9003";
+                        btn.style.border = "1px solid #ffffff";
+                        img.src = "img/1.png";
+                        Bimg.src = "img/1.png";
+                    }
+                </script>
+                <script type="text/javascript">
+                    var img1 = document.getElementById("img1");
+                    var img2 = document.getElementById("img2");
+                    var slider = document.getElementById("slider");
+                    var Bimg = document.getElementById("Bimg");
+                    var bannerc1aa = document.getElementById('bannerc1aa');
+
+                    img1.onmouseover = function () {
+                        slider.style.display = 'block';
+                        img2.style.display = 'block';
+                    }
+                    img1.onmouseout = function () {
+                        slider.style.display = 'none';
+                        img2.style.display = 'none';
+                    }
+
+                    img1.onmousemove = function (ev) {
+                        var ev = ev || window.event;
+
+                        var oL = ev.clientX - bannerc1aa.offsetLeft - slider.offsetWidth / 2;
+                        var oT = ev.clientY - bannerc1aa.offsetTop - slider.offsetHeight / 2;
+
+                        var oMaxw = img1.offsetWidth - slider.offsetWidth;
+                        var oMaxh = img1.offsetHeight - slider.offsetHeight;
+
+                        oL = oL > oMaxw ? oMaxw : oL < 0 ? 0 : oL;
+                        oT = oT > oMaxh ? oMaxh : oT < 0 ? 0 : oT;
+
+                        slider.style.left = oL + 'px';
+                        slider.style.top = oT + 'px';
+
+                        var scale = img2.offsetWidth / slider.offsetWidth;
+                        Bimg.style.left = -scale * oL + 'px'
+                        Bimg.style.top = -scale * oT + 'px'
+                    }
+                </script>
+                <div class="bannerc1b">
+                    <p class="bannerc1b1">足银孔雀手镯</p>
+                    <p class="bannerc1b2">正品孔雀景泰蓝烧花纯银手镯足银999     <br>     
+                            彩色凤凰珐琅器银饰
+                    </p>
+                    <p style="margin-top:25px;margin-left:20px;">价格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="color:#ff0000;"></span>&nbsp;&nbsp;
+                        <span style="text-decoration:line-through;"></span>
+                    </p>
+                    <p style="margin-top:20px;margin-left:20px;">发货&nbsp;&nbsp;国内保税仓（包邮）&nbsp;&nbsp;3-7天</p>
+                    <div class="bannerc1b3">
+                        <img src="img/lijian.png" style="float:left;">
+                        <p style="color:#676660;float:left;margin-left:20px;">VIP用户每单至少补贴1元</p>
+                    </div>
+                    <div class="bannerc1b4">
+                        <p style="float:left">化妆品净含量</p>
+                        <p id="js" style="float:left;margin-left:18px;">150ml</p>
+                        <div id="asd"></div>
+                        <div id="bannerc1b5">150ml</div>
+                        <p id="jsp" style="float:left;margin-left:18px;">200ml</p>
+                        <div id="bannerc1b6">200ml</div>
+                    </div>
+                    <div class="bannerc1b7">
+                        <p style="float:left">数量</p>
+                        <button id="bannerc1b8">-</button>
+                        <div id="bannerc1b9">1</div>
+                        <button id="bannerc1b10">+</button>
+                        <p style="float:left;padding-top:5px">件（库存5件）</p>
+                    </div>
+                    <script type="text/javascript">
+                        var bannerc1b8 = document.getElementById("bannerc1b8");
+                        var bannerc1b9 = document.getElementById("bannerc1b9");
+                        var bannerc1b10 = document.getElementById("bannerc1b10");
+                        var count = 0;
+                        bannerc1b10.onclick = function () {
+                            count = count + 1;
+                            bannerc1b9.innerHTML = count;
+                        }
+                        bannerc1b8.onclick = function () {
+                            count = count - 1;
+                            bannerc1b9.innerHTML = count;
+                        }
+                    </script>
+                    <div class="bannerc1b11">
+                        <p style="color:#676660;float:left">销量</p>
+                        <p style="color:#676660;float:left;margin-left:60px"><span style="color:#ff0754">81</span>件</p>
+                    </div>
+                    <div class="clear"></div>
+                    <p style="margin-left:110px;margin-top:10px;float:left">您已选择</p>
+                    <p id="xuan">"150ml"</p>
+                    <p id="xuan1">"200ml"</p>
+
+                    <div class="clear"></div>
+                    <div class="bannerc1b12">
+                        <button class="bannerc1b13">立即购买</button>
+                        <button class="bannerc1b14">加入购物车</button>
+                    </div>
+                    <script type="text/javascript">
+                        var js = document.getElementById('js');
+                        var jsp = document.getElementById('jsp');
+                        var bannerc1b5 = document.getElementById('bannerc1b5');
+                        var bannerc1b6 = document.getElementById('bannerc1b6');
+                        var xuan = document.getElementById('xuan');
+                        var xuan1 = document.getElementById('xuan1');
+                        js.onclick = function () {
+                            bannerc1b6.style.display = "none";
+                            bannerc1b5.style.display = "block";
+                            js.style.display = "none";
+                            jsp.style.display = "block";
+                            xuan.style.display = "block";
+                            xuan1.style.display = "none";
+
+                        }
+                        jsp.onclick = function () {
+                            js.style.display = "block";
+                            bannerc1b5.style.display = "none";
+                            bannerc1b6.style.display = "block";
+                            jsp.style.display = "none";
+                            xuan1.style.display = "block";
+                            xuan.style.display = "none";
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="bannerc2">
+                <img src="img/ww_07.jpg">
+            </div>
+            
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="di">
+        <div class="di1">
+            <div class="di1a">
+                <ul>
+                    <li>
+                        <div class="di1a1">优</div>
+                        <p class="di1a1a">品质保证</p>
+                        <p class="di1a1b">品质护航 购物无忧</p>
+                    </li>
+                    <li>
+                        <div class="di1a1">七</div>
+                        <p class="di1a1a">七天无理由退换货</p>
+                        <p class="di1a1b">为您提供售后无忧保障</p>
+                    </li>
+                    <li>
+                        <div class="di1a1">特</div>
+                        <p class="di1a1a">特色服务体验</p>
+                        <p class="di1a1b">为您呈现不一样的服务</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dib">
+                <ul>
+                    <li>
+                        <a href="" style="color:black;font-size:16px;">购物指南</a><br>
+                        <a href="">免费注册</a><br>
+                        <a href="">开通支付宝</a><br>
+                        <a href="">支付宝充值</a>
+                    </li>
+                    <li>
+                        <a href="" style="color:black;font-size:16px;">天猫保障</a><br>
+                        <a href="">发票保障</a><br>
+                        <a href="">售后规则</a><br>
+                        <a href="">缺货赔付</a><br>
+                    </li>
+                    <li>
+                        <a href="" style="color:black;font-size:16px;">支付方式</a><br>
+                        <a href="">快捷支付</a><br>
+                        <a href="">信用卡</a><br>
+                        <a href="">余额宝</a><br>
+                        <a href="">蚂蚁花呗</a><br>
+                        <a href="">货到付款</a><br>
+                    </li>
+                    <li>
+                        <a href="" style="color:black;font-size:16px;">商家服务</a><br>
+                        <a href="">天猫规则</a><br>
+                        <a href="">商家入驻</a><br>
+                        <a href="">商家中心</a><br>
+                        <a href="">天猫智库</a><br>
+                        <a href="">物流服务</a><br>
+                        <a href="">喵言喵语</a><br>
+                        <a href="">运营服务</a><br>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
